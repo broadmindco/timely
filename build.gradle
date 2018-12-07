@@ -17,7 +17,8 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.runway'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 10
+targetCompatibility = 10
 
 repositories {
 	mavenCentral()
@@ -27,11 +28,13 @@ repositories {
 dependencies {
   runtime('org.postgresql:postgresql:42.2.5')
   implementation('org.flywaydb:flyway-core:5.2.0')
+  implementation("org.springframework.boot:spring-boot-starter-data-rest")
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
   implementation('org.springframework.session:spring-session-data-redis')
   implementation('org.springframework.boot:spring-boot-starter-data-redis')
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation('org.springframework.boot:spring-boot-starter-web')
+  implementation('io.micrometer:micrometer-core')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.security:spring-security-test')
 }
