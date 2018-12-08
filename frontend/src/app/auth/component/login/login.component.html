@@ -1,3 +1,36 @@
-<p>
-  login works!
-</p>
+<section class="hero is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8">
+        </div>
+        <div class="column">
+          <h1 class="title">Login</h1>
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Email">
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="faEnvelope"></fa-icon>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Password">
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success is-fullwidth">
+                Login
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
