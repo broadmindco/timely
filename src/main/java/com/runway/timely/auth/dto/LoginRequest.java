@@ -1,8 +1,13 @@
 package com.runway.timely.auth.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class LoginRequest {
 
+    @NotNull
     private String email;
+
+    @NotNull
     private String password;
 
     public String getEmail() {

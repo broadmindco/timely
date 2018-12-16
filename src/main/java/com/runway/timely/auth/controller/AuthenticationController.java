@@ -1,63 +1,38 @@
 package com.runway.timely.auth.controller;
 
-import com.runway.timely.auth.dto.LoginRequest;
-import com.runway.timely.auth.domain.Session;
-import com.runway.timely.auth.dto.LoginResponse;
-import com.runway.timely.auth.exception.LoginFailedException;
+import com.runway.timely.auth.exception.UnauthorizedException;
 import com.runway.timely.auth.service.AuthenticationService;
-import com.runway.timely.user.service.UserService;
+import com.runway.timely.user.dto.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthenticationController {
 
+    private final AuthenticationService authService;
 
-    private final AuthenticationService authenticationService;
-    private final UserService userService;
-
-    public AuthenticationController(
-        AuthenticationService authenticationService,
-        UserService userService
-    ) {
-        this.authenticationService = authenticationService;
-        this.userService = userService;
+    public AuthenticationController(AuthenticationService authService) {
+        this.authService = authService;
     }
 
-    @PostMapping()
-    public ResponseEntity<LoginResponse> login(
-        @Valid @RequestBody LoginRequest loginRequest,
-        HttpSession httpSession
-    ) {
+    @GetMapping
+    public ResponseEntity<UserResponse> getCurrentUser() {
 
-        final var user = this.authenticationService
-            .authenticate(loginRequest)
-            .orElseThrow(LoginFailedException::new);
-
-        var session = new Session(UUID.fromString(httpSession.getId()), user);
-
-        var auth = new UsernamePasswordAuthenticationToken(
-            session,
-            null,
-            session.getRoles()
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
-        final var response = new LoginResponse(session.getSessionId(), user);
+        final var response = this.authService
+            .getCurrentUser()
+            .map(UserResponse::new)
+            .orElseThrow(UnauthorizedException::new);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
-
 
     @DeleteMapping
     public ResponseEntity<String> logout(

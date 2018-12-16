@@ -1,12 +1,11 @@
 package com.runway.timely.auth.service;
 
-import com.runway.timely.auth.dto.LoginRequest;
+import com.runway.timely.auth.domain.CustomUserDetails;
 import com.runway.timely.user.domain.User;
 import com.runway.timely.user.service.UserService;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -19,18 +18,14 @@ class DefaultAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public Optional<User> authenticate(LoginRequest loginRequest) {
+    public Optional<User> getCurrentUser() {
 
-        final var user = this.userService
-            .findByEmail(loginRequest.getEmail())
-            .orElseThrow(EntityNotFoundException::new);
+        final var email = SecurityContextHolder
+            .getContext()
+            .getAuthentication()
+            .getName();
 
-        if (!BCrypt.checkpw(loginRequest.getPassword(), user.getPassword())) {
-            return Optional.empty();
-        }
-
-        return Optional.of(user);
+        return this.userService.findByEmail(email);
 
     }
-
 }

@@ -1,31 +1,25 @@
 package com.runway.timely.user.dto;
 
 import com.runway.timely.user.domain.Role;
-import com.runway.timely.user.domain.RoleName;
 import com.runway.timely.user.domain.User;
 import com.runway.timely.util.Guard;
 
 import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class UserResponse {
 
     private final String email;
-    private final UUID id;
-    private final Set<RoleName> roles;
+    private final String id;
+    private final Set<Role> roles;
 
     public UserResponse(User user) {
         Guard.requireNonNull(user, "User cannot be null!");
         this.email = user.getEmail();
         this.id = user.getId();
-        this.roles = user.getRoles()
-            .stream()
-            .map(Role::getName)
-            .collect(Collectors.toSet());
+        this.roles = user.getRoles();
     }
 
-    public Set<RoleName> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -33,8 +27,7 @@ public class UserResponse {
         return email;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
-
 }

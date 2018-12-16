@@ -1,6 +1,6 @@
 package com.runway.timely.user.dto;
 
-import com.runway.timely.user.domain.RoleName;
+import com.runway.timely.user.domain.Role;
 
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -14,13 +14,13 @@ public class UserRequest {
     private String password;
 
     @NotNull
-    private Set<RoleName> roles;
+    private Set<Role> roles;
 
-    public Set<RoleName> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<RoleName> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
