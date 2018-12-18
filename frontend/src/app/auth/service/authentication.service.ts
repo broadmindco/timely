@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {LoginRequest} from "../dto/login-request";
+import {LoginResponse} from "../dto/login-response";
 
 interface AuthService {
-  authenticate(loginRequest: LoginRequest): Promise<any>
+  authenticate(loginRequest: LoginRequest): Promise<any>,
+  isAuthenticated(): boolean
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService implements AuthService {
+
+  private loginResponse: LoginResponse;
 
   constructor(
     private http: HttpClient
@@ -18,6 +22,11 @@ export class AuthenticationService implements AuthService {
   }
 
   async authenticate(loginRequest : LoginRequest) {
+
+    if(this.loginResponse) {
+      console.log("Cached loginResponse:");
+      return this.loginResponse;
+    }
 
     const options : any = {
       headers: new HttpHeaders({
@@ -28,14 +37,16 @@ export class AuthenticationService implements AuthService {
     };
 
     try {
-      const response = await this.http.get('/api/auth', options).toPromise();
-      console.log(response);
-      return response;
+      this.loginResponse = await this.http.get<LoginResponse>('/api/auth', options).subscribe();
+      return this.loginResponse;
     } catch (e) {
       throw e;
-    } finally {
-
     }
+
+  }
+
+  isAuthenticated(): boolean {
+    return this.loginResponse !== null;
   }
 
 }

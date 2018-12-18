@@ -8,7 +8,7 @@
           <h1 class="title">Login</h1>
           <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input (ngModel)="loginRequest.email" class="input" type="email" placeholder="Email">
+              <input [(ngModel)]="loginRequest.email" class="input" type="email" placeholder="Email">
               <span class="icon is-small is-left">
                 <fa-icon [icon]="faEnvelope"></fa-icon>
               </span>
@@ -16,7 +16,7 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input (ngModel)="loginRequest.password" class="input" type="password" placeholder="Password">
+              <input [(ngModel)]="loginRequest.password" class="input" type="password" placeholder="Password">
               <span class="icon is-small is-left">
                 <fa-icon [icon]="faLock"></fa-icon>
               </span>

@@ -1,23 +1,21 @@
 package com.runway.timely.lead.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Objects;
+import java.util.UUID;
 
-@Document
 public class Contact {
 
-    @Id
-    private String id;
+    private UUID id = UUID.randomUUID();
 
     private String name;
 
-    private Social social;
+    private EmbeddedSocial embeddedSocial;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -29,12 +27,24 @@ public class Contact {
         this.name = name;
     }
 
-    public Social getSocial() {
-        return social;
+    public EmbeddedSocial getEmbeddedSocial() {
+        return embeddedSocial;
     }
 
-    public void setSocial(Social social) {
-        this.social = social;
+    public void setEmbeddedSocial(EmbeddedSocial embeddedSocial) {
+        this.embeddedSocial = embeddedSocial;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(id, contact.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

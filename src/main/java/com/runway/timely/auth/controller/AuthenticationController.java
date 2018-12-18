@@ -1,5 +1,6 @@
 package com.runway.timely.auth.controller;
 
+import com.runway.timely.auth.dto.LoginResponse;
 import com.runway.timely.auth.exception.UnauthorizedException;
 import com.runway.timely.auth.service.AuthenticationService;
 import com.runway.timely.user.dto.UserResponse;
@@ -23,11 +24,13 @@ public class AuthenticationController {
     }
 
     @GetMapping
-    public ResponseEntity<UserResponse> getCurrentUser() {
+    public ResponseEntity<LoginResponse> getCurrentUser(
+        HttpSession session
+    ) {
 
         final var response = this.authService
             .getCurrentUser()
-            .map(UserResponse::new)
+            .map(u -> new LoginResponse(session.getId(), u))
             .orElseThrow(UnauthorizedException::new);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

@@ -1,9 +1,6 @@
 package com.runway.timely.lead.domain;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
-public class Address {
+public class EmbeddedAddress {
 
     private String street;
 

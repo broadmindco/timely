@@ -7,15 +7,15 @@ import java.util.UUID;
 
 public class LoginResponse {
 
-    private final UUID sessionId;
+    private final String sessionId;
     private final UserResponse user;
 
-    public LoginResponse(UUID sessionId, User user) {
+    public LoginResponse(String sessionId, User user) {
         this.sessionId = sessionId;
         this.user = new UserResponse(user);
     }
 
-    public UUID getSessionId() {
+    public String getSessionId() {
         return sessionId;
     }
 

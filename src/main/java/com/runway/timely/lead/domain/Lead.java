@@ -16,9 +16,9 @@ public class Lead {
 
     private String name;
 
-    private Address address;
+    private EmbeddedAddress embeddedAddress;
 
-    private Social social;
+    private EmbeddedSocial embeddedSocial;
 
     public String getId() {
         return id;
@@ -44,19 +44,19 @@ public class Lead {
         this.name = name;
     }
 
-    public Address getAddress() {
-        return address;
+    public EmbeddedAddress getEmbeddedAddress() {
+        return embeddedAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setEmbeddedAddress(EmbeddedAddress embeddedAddress) {
+        this.embeddedAddress = embeddedAddress;
     }
 
-    public Social getSocial() {
-        return social;
+    public EmbeddedSocial getEmbeddedSocial() {
+        return embeddedSocial;
     }
 
-    public void setSocial(Social social) {
-        this.social = social;
+    public void setEmbeddedSocial(EmbeddedSocial embeddedSocial) {
+        this.embeddedSocial = embeddedSocial;
     }
 }

@@ -25,14 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    try {
-      const session = await this.authService.authenticate(this.loginRequest);
-      console.log(session)
-    } catch (e) {
-      console.log(e)
-    } finally {
-      this.loginRequest = new LoginRequest();
-    }
+    const session = await this.authService.authenticate(this.loginRequest);
   }
 
 }

@@ -5,7 +5,8 @@ import com.runway.timely.user.domain.Role;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-public class UserRequest {
+public class
+UserRequest {
 
     @NotNull
     private String email;

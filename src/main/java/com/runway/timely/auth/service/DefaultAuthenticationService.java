@@ -1,6 +1,5 @@
 package com.runway.timely.auth.service;
 
-import com.runway.timely.auth.domain.CustomUserDetails;
 import com.runway.timely.user.domain.User;
 import com.runway.timely.user.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;

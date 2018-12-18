@@ -36,15 +36,16 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+            .sessionCreationPolicy(SessionCreationPolicy.NEVER)
+            .sessionFixation().migrateSession()
             .and()
-            .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .httpBasic()
             .and()
             .authorizeRequests()
-            .anyRequest()
-            .authenticated()
+            .anyRequest().fullyAuthenticated()
             .and()
-            .httpBasic();
+            .csrf()
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
     @Bean
