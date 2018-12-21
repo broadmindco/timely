@@ -5,7 +5,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UserService {
 
@@ -14,7 +13,7 @@ public interface UserService {
 
     Optional<User> findByEmail(String email);
 
-    Optional<User> findById(UUID id);
+    Optional<User> findById(String id);
 
     boolean existsByEmail(@NotNull(message = "Email cannot be null") String email);
 

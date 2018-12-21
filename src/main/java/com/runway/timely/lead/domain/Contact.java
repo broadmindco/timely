@@ -9,15 +9,7 @@ public class Contact {
 
     private String name;
 
-    private EmbeddedSocial embeddedSocial;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    private Social social;
 
     public String getName() {
         return name;
@@ -27,12 +19,20 @@ public class Contact {
         this.name = name;
     }
 
-    public EmbeddedSocial getEmbeddedSocial() {
-        return embeddedSocial;
+    public Social getSocial() {
+        return social;
     }
 
-    public void setEmbeddedSocial(EmbeddedSocial embeddedSocial) {
-        this.embeddedSocial = embeddedSocial;
+    public void setSocial(Social social) {
+        this.social = social;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     @Override

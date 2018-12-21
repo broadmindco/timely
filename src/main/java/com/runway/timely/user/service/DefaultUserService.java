@@ -6,7 +6,6 @@ import com.runway.timely.util.Guard;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 class DefaultUserService implements UserService {
@@ -26,16 +25,19 @@ class DefaultUserService implements UserService {
 
     @Override
     public Optional<User> findByEmail(String email) {
+        Guard.requireNonNull(email, "Email cannot be null!");
         return this.userRepository.findByEmail(email.toLowerCase());
     }
 
     @Override
     public boolean existsByEmail(String email) {
+        Guard.requireNonNull(email, "Email cannot be null!");
         return this.userRepository.existsByEmail(email);
     }
 
     @Override
-    public Optional<User> findById(UUID id) {
+    public Optional<User> findById(String id) {
+        Guard.requireNonNull(id, "Id cannot be null!");
         return this.userRepository.findById(id);
     }
 }

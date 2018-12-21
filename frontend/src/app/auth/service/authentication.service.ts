@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginRequest} from "../dto/login-request";
 import {LoginResponse} from "../dto/login-response";
+import {Router} from "@angular/router";
 
 interface AuthService {
   authenticate(loginRequest: LoginRequest): Promise<any>,
@@ -16,7 +17,8 @@ export class AuthenticationService implements AuthService {
   private loginResponse: LoginResponse;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
 
   }
@@ -28,7 +30,7 @@ export class AuthenticationService implements AuthService {
       return this.loginResponse;
     }
 
-    const options : any = {
+    const options = {
       headers: new HttpHeaders({
         'X-Requested-With': 'XMLHttpRequest',
         'Authorization': 'Basic ' + btoa(loginRequest.email + ':' + loginRequest.password)
@@ -37,8 +39,8 @@ export class AuthenticationService implements AuthService {
     };
 
     try {
-      this.loginResponse = await this.http.get<LoginResponse>('/api/auth', options).subscribe();
-      return this.loginResponse;
+      const response = await this.http.get<LoginResponse>('/api/auth', options).toPromise();
+      this.saveLoginResponse(response)
     } catch (e) {
       throw e;
     }
@@ -46,7 +48,32 @@ export class AuthenticationService implements AuthService {
   }
 
   isAuthenticated(): boolean {
-    return this.loginResponse !== null;
+    if (this.loginResponse !== null && this.loginResponse !== undefined) {
+      return true;
+    }
+
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (user !== null && user !== undefined) {
+      this.loginResponse = user;
+      return true;
+    }
+
+    return false;
+  }
+
+  getCurrentUser() {
+    return this.loginResponse;
+  }
+
+  logout() {
+    this.loginResponse = null;
+    localStorage.clear();
+    return this.router.navigate(["auth", "login"]);
+  }
+  private saveLoginResponse(loginResponse: LoginResponse) {
+    localStorage.setItem('currentUser', JSON.stringify(loginResponse));
+    this.loginResponse = loginResponse;
   }
 
 }

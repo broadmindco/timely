@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Document
@@ -16,9 +17,19 @@ public class Lead {
 
     private String name;
 
-    private EmbeddedAddress embeddedAddress;
+    private Address address;
 
-    private EmbeddedSocial embeddedSocial;
+    private Social social;
+
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getId() {
         return id;
@@ -44,19 +55,33 @@ public class Lead {
         this.name = name;
     }
 
-    public EmbeddedAddress getEmbeddedAddress() {
-        return embeddedAddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setEmbeddedAddress(EmbeddedAddress embeddedAddress) {
-        this.embeddedAddress = embeddedAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public EmbeddedSocial getEmbeddedSocial() {
-        return embeddedSocial;
+    public Social getSocial() {
+        return social;
     }
 
-    public void setEmbeddedSocial(EmbeddedSocial embeddedSocial) {
-        this.embeddedSocial = embeddedSocial;
+    public void setSocial(Social social) {
+        this.social = social;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lead lead = (Lead) o;
+        return Objects.equals(id, lead.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }

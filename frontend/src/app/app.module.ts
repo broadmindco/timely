@@ -4,17 +4,23 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {AuthRoutingModule} from "./auth/auth-routing.module";
+import {LeadModule} from "./lead/lead.module";
+import {LeadRoutingModule} from "./lead/lead-routing.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AuthModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    LeadModule,
+    LeadRoutingModule,
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

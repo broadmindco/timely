@@ -1,0 +1,45 @@
+package com.runway.timely.lead.dto;
+
+import com.runway.timely.lead.domain.Address;
+import com.runway.timely.lead.domain.Contact;
+import com.runway.timely.lead.domain.Lead;
+import com.runway.timely.lead.domain.Social;
+
+import java.util.Set;
+
+public class LeadResponse {
+
+    private final Address address;
+    private final Social social;
+    private final Set<Contact> contacts;
+    private final String name;
+    private final String status;
+
+    public LeadResponse(Lead lead) {
+        this.address = lead.getAddress();
+        this.contacts = lead.getContacts();
+        this.social = lead.getSocial();
+        this.name = lead.getName();
+        this.status = lead.getStatus();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Social getSocial() {
+        return social;
+    }
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 import {LoginRequest} from "../../dto/login-request";
 import {AuthenticationService} from "../../service/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   loginRequest = new LoginRequest();
 
   constructor(
-   private authService: AuthenticationService
+   private authService: AuthenticationService,
+   private router: Router
   ) {
 
   }
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    const session = await this.authService.authenticate(this.loginRequest);
+    const user = await this.authService.authenticate(this.loginRequest);
+    this.router.navigate(['leads', 'all']);
   }
 
 }

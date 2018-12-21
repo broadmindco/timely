@@ -1,6 +1,6 @@
 package com.runway.timely.lead.domain;
 
-public class EmbeddedSocial {
+public class Social {
 
     private String email;
 
@@ -71,4 +71,5 @@ public class EmbeddedSocial {
     public void setWebsite(String website) {
         this.website = website;
     }
+
 }

@@ -1,6 +1,6 @@
 package com.runway.timely.lead.domain;
 
-public class EmbeddedAddress {
+public class Address {
 
     private String street;
 
@@ -61,4 +61,5 @@ public class EmbeddedAddress {
     public void setInfo(String info) {
         this.info = info;
     }
+
 }
