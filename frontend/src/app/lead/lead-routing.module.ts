@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {LeadComponent} from "./component/lead.component";
 import {AllLeadComponent} from "./component/all-lead/all-lead.component";
 import {NewLeadComponent} from "./component/new-lead/new-lead.component";
+import {AllLeadsResolverService} from "./resolver/all-leads-resolver.service";
+import {ShowLeadComponent} from "./component/show-lead/show-lead.component";
+import {EditLeadComponent} from "./component/edit-lead/edit-lead.component";
 import {LeadResolverService} from "./resolver/lead-resolver.service";
 
 const routes: Routes = [
@@ -13,15 +16,24 @@ const routes: Routes = [
     component: LeadComponent,
     children: [
       {
-        path: 'all',
-        component: AllLeadComponent,
-        resolve: {
-          leads: LeadResolverService
-        }
-      },
-      {
         path: 'new',
         component: NewLeadComponent
+      },
+      {
+        path: '',
+        component: AllLeadComponent,
+        resolve: { leads: AllLeadsResolverService },
+        pathMatch: 'full'
+      },
+      {
+        path: ':id',
+        component: ShowLeadComponent,
+        resolve: { lead: LeadResolverService },
+      },
+      {
+        path: ':id/edit',
+        component: EditLeadComponent,
+        resolve: { lead: LeadResolverService }
       },
     ]
   }
@@ -31,4 +43,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class LeadRoutingModule { }

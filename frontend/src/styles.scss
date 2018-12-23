@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+$family-sans-serif: "PT Sans", sans-serif;
+
+$grey-light: #faf9f9;
+$primary: #488b8f;
+$secondary: #add2c9;
+$link: #5ea3a3;
+$success: #5ea3a3;
+
+$control-border-width: 2px;
+$input-background-color: #faf9f9;
+$input-border-color: transparent;
+$input-shadow: none;
+
+@import "../node_modules/bulma/bulma.sass";

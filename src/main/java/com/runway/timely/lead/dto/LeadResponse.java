@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class LeadResponse {
 
+    private final String id;
     private final Address address;
     private final Social social;
     private final Set<Contact> contacts;
@@ -16,11 +17,16 @@ public class LeadResponse {
     private final String status;
 
     public LeadResponse(Lead lead) {
+        this.id = lead.getId();
         this.address = lead.getAddress();
         this.contacts = lead.getContacts();
         this.social = lead.getSocial();
         this.name = lead.getName();
         this.status = lead.getStatus();
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getStatus() {

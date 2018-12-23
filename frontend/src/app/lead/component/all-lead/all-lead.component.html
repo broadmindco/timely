@@ -1,5 +1,72 @@
-<ul>
-  <li *ngFor="let lead of this.leads">
-    {{lead.name}}
-  </li>
-</ul>
+<div class="columns" style="padding: 25px;">
+  <div class="column is-3" *ngFor="let state of this.states" >
+    <h2 class="subtitle">{{state}}</h2>
+    <div *ngIf="this.draggedLead" (drop)="dragDrop($event, state)" class="box" (dragover)="dragOver($event)">Hinzufügen</div>
+    <div (click)="this.disableContextMenu()" *ngFor="let lead of this.filterLeadsByStatus(state)" class="box" draggable="true" (contextmenu)="this.showRightclickMenu($event, lead)" (dragend)="dragEnd($event, lead)" (dragstart)="dragStart($event, lead)">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{lead.name}}</strong> -
+              <small>{{lead.social.email}}</small>
+              <br>
+              {{lead.description}}
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-right">
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="dropdown is-active" *ngIf="this.selectedLeadForContext" style="position: absolute" [ngStyle]="{'left.px': this.selectedLeadForContext.context.positionX, 'top.px': this.selectedLeadForContext.context.positionY}">
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <span class="dropdown-item">
+          <span class="icon">
+            <fa-icon [icon]="faEllipsisV"></fa-icon>
+          </span>
+          <b>Context menu</b>
+        </span>
+        <hr class="dropdown-divider">
+        <a [routerLink]="[this.selectedLeadForContext.id]" class="dropdown-item">
+          <span class="icon">
+            <fa-icon [icon]="faInfo"></fa-icon>
+          </span>
+          Details
+        </a>
+        <a [routerLink]="[this.selectedLeadForContext.id, 'edit']" class="dropdown-item">
+          <span class="icon">
+            <fa-icon [icon]="faPencil"></fa-icon>
+          </span>
+          Bearbeiten
+        </a>
+        <a class="dropdown-item">
+          <span class="icon">
+            <fa-icon [icon]="faUserPlus"></fa-icon>
+          </span>
+          Zuweisen
+        </a>
+        <hr class="dropdown-divider">
+        <a class="dropdown-item">
+          <span class="icon">
+            <fa-icon [icon]="faDelete"></fa-icon>
+          </span>
+          Löschen
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

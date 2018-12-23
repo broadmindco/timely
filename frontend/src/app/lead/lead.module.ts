@@ -10,13 +10,17 @@ import {AllLeadComponent} from './component/all-lead/all-lead.component';
 import {NewLeadComponent} from './component/new-lead/new-lead.component';
 import {SharedModule} from "../shared/shared.module";
 import { MenuComponent } from './component/menu/menu.component';
+import { ShowLeadComponent } from './component/show-lead/show-lead.component';
+import { EditLeadComponent } from './component/edit-lead/edit-lead.component';
 
 @NgModule({
   declarations: [
     LeadComponent,
     AllLeadComponent,
     NewLeadComponent,
-    MenuComponent
+    MenuComponent,
+    ShowLeadComponent,
+    EditLeadComponent
   ],
   imports: [
     BrowserModule,

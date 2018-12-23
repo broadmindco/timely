@@ -15,11 +15,11 @@ export class IsAuthenticatedInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
     const user = this.authService.getCurrentUser();
-    const headers = new HttpHeaders({
+    const headers = {
       'X-Requested-With': 'XMLHttpRequest',
       'X-AUTH-TOKEN': user.sessionId
-    });
-    const request = req.clone({ headers: headers });
+    };
+    const request = req.clone({ setHeaders: headers });
     return next.handle(request);
   }
 

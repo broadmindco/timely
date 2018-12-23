@@ -15,4 +15,5 @@ public interface LeadService {
     @PreAuthorize("#sender.isAdmin()")
     Stream<Lead> findAll(User sender);
 
+    Optional<Lead> findById(String id, User sender);
 }

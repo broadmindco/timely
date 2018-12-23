@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import {faList, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
 
   faPlus = faPlusCircle;
+  faList = faList;
 
   constructor() { }
 
