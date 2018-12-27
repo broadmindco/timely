@@ -4,6 +4,7 @@ import {LeadResponse} from "../../dto/lead-response";
 import {faEllipsisV, faInfo, faPen, faTrash, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {LeadRequest} from "../../dto/lead-request";
 import {LeadService} from "../../service/lead.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-all-lead',
@@ -14,16 +15,19 @@ export class AllLeadComponent implements OnInit {
 
   states: Set<string> = new Set();
   leads: Array<LeadResponse> = [];
+  error: HttpErrorResponse;
+  isLoading = true;
 
   draggedLead: LeadResponse = null;
   selectedLeadForContext: LeadResponse = null;
 
-  faInfo = faInfo;
-  faDelete = faTrash;
-  faUserPlus = faUserPlus;
-  faEllipsisV = faEllipsisV;
-  faPencil = faPen;
-
+  icons = {
+    faInfo,
+    faTrash,
+    faUserPlus,
+    faEllipsisV,
+    faPen
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -31,9 +35,14 @@ export class AllLeadComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.leads = this.route.snapshot.data.leads;
-    // ES6 to the rescue!
-    this.states = new Set(this.leads.map(lead => lead.status));
+    this.leadService.getAllLeads().subscribe(
+      data => this.leads = data,
+      error => this.error = error,
+      () => {
+        this.states = new Set(this.leads.map(lead => lead.status));
+        this.isLoading = false;
+      }
+    );
   }
 
   filterLeadsByStatus(status: string) {

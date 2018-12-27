@@ -10,6 +10,7 @@ export class EditLeadComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

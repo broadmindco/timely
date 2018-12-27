@@ -3,6 +3,7 @@ import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 import {LoginRequest} from "../../dto/login-request";
 import {AuthenticationService} from "../../service/authentication.service";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
   faEnvelope = faEnvelope;
   faLock = faLock;
   loginRequest = new LoginRequest();
+  error: HttpErrorResponse = null;
+  isLoading = false;
 
   constructor(
    private authService: AuthenticationService,
@@ -26,9 +29,17 @@ export class LoginComponent implements OnInit {
 
   }
 
-  async login() {
-    const user = await this.authService.authenticate(this.loginRequest);
-    this.router.navigate(['leads']);
+  login() {
+    this.isLoading = true;
+    this.authService.authenticate(this.loginRequest).subscribe(
+      data => {
+        this.authService.saveLoginResponse(data);
+        this.router.navigate(['leads'])
+      },
+      error => this.error = error,
+      () => this.isLoading = false
+    );
+
   }
 
 }

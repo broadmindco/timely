@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {LeadResponse} from "../../dto/lead-response";
+import {LeadService} from "../../service/lead.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-show-lead',
@@ -9,16 +11,25 @@ import {LeadResponse} from "../../dto/lead-response";
 })
 export class ShowLeadComponent implements OnInit {
 
-  lead: LeadResponse;
+  lead: LeadResponse = null;
+  error: HttpErrorResponse;
+  loading = true;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private leadService: LeadService
   ) {
 
   }
 
   ngOnInit() {
-    this.lead = this.route.snapshot.data.lead;
+    const leadId = this.route.snapshot.params.id;
+
+    this.leadService.getOneLead(leadId).subscribe(
+      data => this.lead = data,
+      error => this.error = error,
+      () => this.loading = false
+    )
   }
 
 }

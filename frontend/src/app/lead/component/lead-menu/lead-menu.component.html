@@ -1,0 +1,23 @@
+<aside class="menu">
+  <b class="menu-label">
+    Allgemein
+  </b>
+  <ul class="menu-list">
+    <li>
+      <a [routerLink]="['new']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        <span class="icon">
+          <fa-icon [icon]="icons.plus"></fa-icon>
+        </span>
+        Neuen lead erstellen
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/leads']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        <span class="icon">
+          <fa-icon [icon]="icons.list"></fa-icon>
+        </span>
+        Alle leads
+      </a>
+    </li>
+  </ul>
+</aside>

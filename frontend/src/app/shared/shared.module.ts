@@ -4,10 +4,12 @@ import {FormsModule} from "@angular/forms";
 import {NavbarComponent} from "./component/navbar/navbar.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {RouterModule} from "@angular/router";
+import { LoadingSpinnerComponent } from './component/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import {RouterModule} from "@angular/router";
   providers: [],
   bootstrap: [],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

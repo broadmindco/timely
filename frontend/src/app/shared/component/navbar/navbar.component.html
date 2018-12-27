@@ -1,30 +1,37 @@
 <aside class="menu">
   <ul class="menu-list">
     <li>
-      <a [routerLink]="['leads']" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: false}">
+      <a [routerLink]="['/leads']" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: false}">
         <span class="icon is-large">
-          <fa-icon [icon]="faBuilding"></fa-icon>
+          <fa-icon [icon]="icons.faBuilding"></fa-icon>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/invoices']" routerLinkActive="is-active">
+        <span class="icon is-large">
+          <fa-icon [icon]="icons.faDollarSign"></fa-icon>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/invoices']" routerLinkActive="is-active">
+        <span class="icon is-large">
+          <fa-icon [icon]="icons.faUser"></fa-icon>
         </span>
       </a>
     </li>
     <li>
       <a [routerLink]="['invoices']" routerLinkActive="is-active">
         <span class="icon is-large">
-          <fa-icon [icon]="faDollar"></fa-icon>
+          <fa-icon [icon]="icons.faCog"></fa-icon>
         </span>
       </a>
     </li>
     <li>
-      <a routerLink="users" routerLinkActive="is-active">
+      <a [routerLink]="['/auth', 'login']" routerLinkActive="is-active">
         <span class="icon is-large">
-          <fa-icon [icon]="faUser"></fa-icon>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a routerLink="settings" routerLinkActive="is-active">
-        <span class="icon is-large">
-          <fa-icon [icon]="faSettings"></fa-icon>
+          <fa-icon [icon]="icons.faTrash"></fa-icon>
         </span>
       </a>
     </li>

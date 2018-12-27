@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {faBuilding, faCog, faDollarSign, faEnvelope, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
+import {Component, OnInit} from '@angular/core';
+import {faBuilding, faCog, faDollarSign, faTrash, faUser} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +8,13 @@ import {faBuilding, faCog, faDollarSign, faEnvelope, faLock, faUser} from "@fort
 })
 export class NavbarComponent implements OnInit {
 
-  faDollar = faDollarSign;
-  faBuilding = faBuilding;
-  faUser = faUser;
-  faSettings = faCog;
+  icons = {
+    faDollarSign,
+    faBuilding,
+    faUser,
+    faCog,
+    faTrash
+  };
 
   constructor() { }
 

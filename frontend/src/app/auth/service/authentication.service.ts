@@ -3,16 +3,12 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginRequest} from "../dto/login-request";
 import {LoginResponse} from "../dto/login-response";
 import {Router} from "@angular/router";
-
-interface AuthService {
-  authenticate(loginRequest: LoginRequest): Promise<any>,
-  isAuthenticated(): boolean
-}
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService implements AuthService {
+export class AuthenticationService {
 
   private loginResponse: LoginResponse;
 
@@ -23,12 +19,7 @@ export class AuthenticationService implements AuthService {
 
   }
 
-  async authenticate(loginRequest : LoginRequest) {
-
-    if(this.loginResponse) {
-      console.log("Cached loginResponse:");
-      return this.loginResponse;
-    }
+  authenticate(loginRequest : LoginRequest) {
 
     const options = {
       headers: new HttpHeaders({
@@ -38,12 +29,7 @@ export class AuthenticationService implements AuthService {
       withCredentials: true
     };
 
-    try {
-      const response = await this.http.get<LoginResponse>('/api/auth', options).toPromise();
-      this.saveLoginResponse(response)
-    } catch (e) {
-      throw e;
-    }
+    return this.http.get<LoginResponse>('/api/auth', options);
 
   }
 
@@ -71,7 +57,8 @@ export class AuthenticationService implements AuthService {
     localStorage.clear();
     return this.router.navigate(["auth", "login"]);
   }
-  private saveLoginResponse(loginResponse: LoginResponse) {
+
+  saveLoginResponse(loginResponse: LoginResponse) {
     localStorage.setItem('currentUser', JSON.stringify(loginResponse));
     this.loginResponse = loginResponse;
   }
