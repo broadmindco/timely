@@ -1,4 +1,4 @@
-package com.runway.timely.lead.exception;
+package io.nomondays.timely.lead.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

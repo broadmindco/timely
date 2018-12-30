@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LeadResponse} from "../../../dto/lead-response";
-import {LeadRequest} from "../../../dto/lead-request";
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-lead-general-form',
@@ -9,7 +8,7 @@ import {LeadRequest} from "../../../dto/lead-request";
 })
 export class LeadGeneralFormComponent implements OnInit {
 
-  @Input() lead: LeadResponse | LeadRequest;
+  @Input() lead: Lead;
 
   constructor() { }
 

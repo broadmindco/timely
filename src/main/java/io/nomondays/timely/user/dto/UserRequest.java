@@ -1,6 +1,6 @@
-package com.runway.timely.user.dto;
+package io.nomondays.timely.user.dto;
 
-import com.runway.timely.user.domain.Role;
+import io.nomondays.timely.user.domain.Role;
 
 import javax.validation.constraints.NotNull;
 import java.util.Set;

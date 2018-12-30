@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LeadService} from '../../../service/lead.service';
-import {LeadRequest} from '../../../dto/lead-request';
-import {LeadResponse} from '../../../dto/lead-response';
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-lead-address-form',
@@ -10,7 +9,7 @@ import {LeadResponse} from '../../../dto/lead-response';
 })
 export class LeadAddressFormComponent implements OnInit {
 
-  @Input() lead: LeadRequest | LeadResponse;
+  @Input() lead: Lead;
 
   constructor(
     private leadService: LeadService

@@ -1,8 +1,8 @@
-package com.runway.timely.lead.converter;
+package io.nomondays.timely.lead.converter;
 
-import com.runway.timely.lead.domain.Lead;
-import com.runway.timely.lead.dto.LeadRequest;
-import com.runway.timely.lead.dto.LeadResponse;
+import io.nomondays.timely.lead.domain.Lead;
+import io.nomondays.timely.lead.dto.LeadRequest;
+import io.nomondays.timely.lead.dto.LeadResponse;
 
 public interface LeadConverter {
 

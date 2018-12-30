@@ -1,11 +1,11 @@
 package io.nomondays.timely.user.controller;
 
-import com.runway.timely.auth.exception.UnauthorizedException;
-import com.runway.timely.auth.service.AuthenticationService;
-import com.runway.timely.user.domain.User;
-import com.runway.timely.user.dto.UserRequest;
-import com.runway.timely.user.dto.UserResponse;
-import com.runway.timely.user.service.UserService;
+import io.nomondays.timely.auth.service.AuthenticationService;
+import io.nomondays.timely.auth.exception.UnauthorizedException;
+import io.nomondays.timely.user.domain.User;
+import io.nomondays.timely.user.dto.UserRequest;
+import io.nomondays.timely.user.dto.UserResponse;
+import io.nomondays.timely.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

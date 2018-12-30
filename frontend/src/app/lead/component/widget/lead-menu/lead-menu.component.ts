@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {faList, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {Component, Input, OnInit} from '@angular/core';
+import {faList, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-lead-menu',
@@ -7,6 +8,8 @@ import {faList, faPlus} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./lead-menu.component.css']
 })
 export class LeadMenuComponent implements OnInit {
+
+  @Input() lead: Lead = null;
 
   icons = {
     plus: faPlus,

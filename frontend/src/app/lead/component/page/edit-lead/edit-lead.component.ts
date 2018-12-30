@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LeadResponse} from "../../dto/lead-response";
-import {HttpErrorResponse} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
-import {LeadService} from "../../service/lead.service";
+import {HttpErrorResponse} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {LeadService} from '../../../service/lead.service';
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-edit-lead',
@@ -11,7 +11,7 @@ import {LeadService} from "../../service/lead.service";
 })
 export class EditLeadComponent implements OnInit {
 
-  lead: LeadResponse = null;
+  lead: Lead = null;
   error: HttpErrorResponse;
   isLoading = true;
   isEditingSocial = false;
@@ -31,7 +31,7 @@ export class EditLeadComponent implements OnInit {
       data => this.lead = data,
       error => this.error = error,
       () => this.isLoading = false
-    )
+    );
   }
 
   updateLead = () => {

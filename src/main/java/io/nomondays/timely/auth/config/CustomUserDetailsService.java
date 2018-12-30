@@ -1,8 +1,8 @@
 package io.nomondays.timely.auth.config;
 
-import com.runway.timely.auth.domain.CustomUserDetails;
-import com.runway.timely.auth.exception.LoginFailedException;
-import com.runway.timely.user.service.UserService;
+import io.nomondays.timely.auth.domain.CustomUserDetails;
+import io.nomondays.timely.auth.exception.LoginFailedException;
+import io.nomondays.timely.user.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;

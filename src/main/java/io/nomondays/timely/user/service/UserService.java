@@ -1,6 +1,6 @@
-package com.runway.timely.user.service;
+package io.nomondays.timely.user.service;
 
-import com.runway.timely.user.domain.User;
+import io.nomondays.timely.user.domain.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.constraints.NotNull;

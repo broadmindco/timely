@@ -1,4 +1,4 @@
-package com.runway.timely.lead.domain;
+package io.nomondays.timely.lead.domain;
 
 import java.util.Objects;
 import java.util.UUID;

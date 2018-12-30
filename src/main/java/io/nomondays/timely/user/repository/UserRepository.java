@@ -1,6 +1,6 @@
-package com.runway.timely.user.repository;
+package io.nomondays.timely.user.repository;
 
-import com.runway.timely.user.domain.User;
+import io.nomondays.timely.user.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

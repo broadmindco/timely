@@ -1,4 +1,4 @@
-package com.runway.timely.auth.dto;
+package io.nomondays.timely.auth.dto;
 
 import javax.validation.constraints.NotNull;
 

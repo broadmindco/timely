@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LeadResponse} from "../../dto/lead-response";
-import {HttpErrorResponse} from "@angular/common/http";
-import {LeadService} from "../../service/lead.service";
+import {HttpErrorResponse} from '@angular/common/http';
+import {LeadService} from '../../../service/lead.service';
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-new-lead',
@@ -10,7 +10,7 @@ import {LeadService} from "../../service/lead.service";
 })
 export class NewLeadComponent implements OnInit {
 
-  lead: LeadResponse = <LeadResponse> {};
+  lead: Lead = null;
   error: HttpErrorResponse;
   isLoading = false;
 

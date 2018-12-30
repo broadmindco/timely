@@ -1,15 +1,15 @@
-import {AddressResponse} from "./address-response";
-import {SocialResponse} from "./social-response";
-import {ContactResponse} from "./contact-response";
+import {HasSocial} from '../domain/has-social';
+import {HasAddress} from '../domain/has-address';
+import {ContactRequest} from './contact-request';
 
-export class LeadRequest {
+export class LeadRequest implements HasSocial, HasAddress {
+  address: { street: string; state: string; city: string; country: string; zip: string; info: string };
+  social: { email: string; phone: string; twitter: string; facebook: string; instagram: string; skype: string; website: string };
 
-  id: string;
-  address: AddressResponse = new AddressResponse();
-  social: SocialResponse = new SocialResponse();
-  contacts: Array<ContactResponse> = [];
   name: string;
   status: string;
   imageUrl: string;
+
+  contacts: Array<ContactRequest> = [];
 
 }

@@ -1,4 +1,4 @@
-package com.runway.timely.user.domain;
+package io.nomondays.timely.user.domain;
 
 public enum Role {
     SUPERADMIN,

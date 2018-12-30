@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {LeadResponse} from "../../dto/lead-response";
-import {LeadService} from "../../service/lead.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpErrorResponse} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {LeadService} from '../../../service/lead.service';
+import {Lead} from '../../../domain/lead';
 
 @Component({
   selector: 'app-show-lead',
@@ -11,7 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class ShowLeadComponent implements OnInit {
 
-  lead: LeadResponse = null;
+  lead: Lead = null;
   error: HttpErrorResponse;
   loading = true;
 
@@ -29,7 +29,7 @@ export class ShowLeadComponent implements OnInit {
       data => this.lead = data,
       error => this.error = error,
       () => this.loading = false
-    )
+    );
   }
 
 }

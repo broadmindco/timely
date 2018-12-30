@@ -1,6 +1,6 @@
-package com.runway.timely.auth.domain;
+package io.nomondays.timely.auth.domain;
 
-import com.runway.timely.user.domain.User;
+import io.nomondays.timely.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

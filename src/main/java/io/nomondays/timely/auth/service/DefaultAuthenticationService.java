@@ -1,7 +1,7 @@
-package com.runway.timely.auth.service;
+package io.nomondays.timely.auth.service;
 
-import com.runway.timely.user.domain.User;
-import com.runway.timely.user.service.UserService;
+import io.nomondays.timely.user.domain.User;
+import io.nomondays.timely.user.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 

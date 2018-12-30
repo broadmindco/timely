@@ -1,8 +1,8 @@
-package com.runway.timely.user.service;
+package io.nomondays.timely.user.service;
 
-import com.runway.timely.user.domain.User;
-import com.runway.timely.user.repository.UserRepository;
-import com.runway.timely.util.Guard;
+import io.nomondays.timely.user.domain.User;
+import io.nomondays.timely.user.repository.UserRepository;
+import io.nomondays.timely.util.Guard;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

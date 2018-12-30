@@ -1,8 +1,8 @@
-package com.runway.timely.lead.service;
+package io.nomondays.timely.lead.service;
 
-import com.runway.timely.lead.domain.Lead;
-import com.runway.timely.lead.dto.LeadRequest;
-import com.runway.timely.user.domain.User;
+import io.nomondays.timely.lead.dto.LeadRequest;
+import io.nomondays.timely.lead.domain.Lead;
+import io.nomondays.timely.user.domain.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.Optional;

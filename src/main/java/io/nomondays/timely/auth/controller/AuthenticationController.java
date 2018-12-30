@@ -1,9 +1,8 @@
-package com.runway.timely.auth.controller;
+package io.nomondays.timely.auth.controller;
 
-import com.runway.timely.auth.dto.LoginResponse;
-import com.runway.timely.auth.exception.UnauthorizedException;
-import com.runway.timely.auth.service.AuthenticationService;
-import com.runway.timely.user.dto.UserResponse;
+import io.nomondays.timely.auth.dto.LoginResponse;
+import io.nomondays.timely.auth.service.AuthenticationService;
+import io.nomondays.timely.auth.exception.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

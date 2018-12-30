@@ -1,13 +1,12 @@
-package com.runway.timely.lead.controller;
+package io.nomondays.timely.lead.controller;
 
-import com.runway.timely.auth.exception.LoginFailedException;
-import com.runway.timely.auth.service.AuthenticationService;
-import com.runway.timely.lead.converter.LeadConverter;
-import com.runway.timely.lead.domain.Lead;
-import com.runway.timely.lead.dto.LeadRequest;
-import com.runway.timely.lead.dto.LeadResponse;
-import com.runway.timely.lead.exception.LeadNotFountException;
-import com.runway.timely.lead.service.LeadService;
+import io.nomondays.timely.auth.exception.LoginFailedException;
+import io.nomondays.timely.auth.service.AuthenticationService;
+import io.nomondays.timely.lead.converter.LeadConverter;
+import io.nomondays.timely.lead.dto.LeadRequest;
+import io.nomondays.timely.lead.dto.LeadResponse;
+import io.nomondays.timely.lead.exception.LeadNotFountException;
+import io.nomondays.timely.lead.service.LeadService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

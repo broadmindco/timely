@@ -1,4 +1,4 @@
-package com.runway.timely.auth.exception;
+package io.nomondays.timely.auth.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

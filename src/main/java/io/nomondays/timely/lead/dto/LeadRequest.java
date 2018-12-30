@@ -1,9 +1,9 @@
-package com.runway.timely.lead.dto;
+package io.nomondays.timely.lead.dto;
 
 
-import com.runway.timely.lead.domain.Address;
-import com.runway.timely.lead.domain.Contact;
-import com.runway.timely.lead.domain.Social;
+import io.nomondays.timely.lead.domain.Address;
+import io.nomondays.timely.lead.domain.Contact;
+import io.nomondays.timely.lead.domain.Social;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;

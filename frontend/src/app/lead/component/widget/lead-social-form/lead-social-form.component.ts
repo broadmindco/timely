@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LeadResponse} from "../../../dto/lead-response";
-import {LeadRequest} from "../../../dto/lead-request";
-import {LeadService} from "../../../service/lead.service";
+import {Lead} from '../../../domain/lead';
+import {LeadService} from '../../../service/lead.service';
 
 @Component({
   selector: 'app-lead-social-form',
@@ -10,18 +9,16 @@ import {LeadService} from "../../../service/lead.service";
 })
 export class LeadSocialFormComponent implements OnInit {
 
-  @Input() lead: LeadResponse | LeadRequest;
+  @Input() lead: Lead;
 
   constructor(private leadService: LeadService) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   updateSocial() {
     this.leadService
       .updateLead(this.lead)
-      .subscribe(this.handleSuccess, this.handleError, this.handleComplete)
+      .subscribe(this.handleSuccess, this.handleError, this.handleComplete);
   }
 
   private handleSuccess(data) {
@@ -33,7 +30,7 @@ export class LeadSocialFormComponent implements OnInit {
   }
 
   private handleComplete() {
-    console.log("Address Saving is done!")
+    console.log('');
   }
 
 }

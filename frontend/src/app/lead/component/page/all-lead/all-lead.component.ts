@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {LeadResponse} from "../../dto/lead-response";
-import {faEllipsisV, faInfo, faPen, faTrash, faUserPlus} from "@fortawesome/free-solid-svg-icons";
-import {LeadRequest} from "../../dto/lead-request";
-import {LeadService} from "../../service/lead.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import {Lead} from '../../../domain/lead';
+import {HttpErrorResponse} from '@angular/common/http';
+import {faEllipsisV, faInfo, faPen, faTrash, faUserPlus} from '@fortawesome/free-solid-svg-icons';
+import {ActivatedRoute} from '@angular/router';
+import {LeadService} from '../../../service/lead.service';
+import {LOADING_SPINNGER_DURATION} from '../../../../shared/util/loading-spinner-duration';
 
 @Component({
   selector: 'app-all-lead',
@@ -14,12 +14,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class AllLeadComponent implements OnInit {
 
   states: Set<string> = new Set();
-  leads: Array<LeadResponse> = [];
+  leads: Array<Lead> = [];
   error: HttpErrorResponse;
   isLoading = true;
 
-  draggedLead: LeadResponse = null;
-  selectedLeadForContext: LeadResponse = null;
+  draggedLead: Lead = null;
+  selectedLeadForContext: Lead = null;
 
   icons = {
     faInfo,
@@ -39,17 +39,19 @@ export class AllLeadComponent implements OnInit {
       data => this.leads = data,
       error => this.error = error,
       () => {
-        this.states = new Set(this.leads.map(lead => lead.status));
-        this.isLoading = false;
+        this.states = new Set(this.leads.map(lead => lead.status).sort());
+        setTimeout(() => {
+          this.isLoading = false;
+        }, LOADING_SPINNGER_DURATION);
       }
     );
   }
 
   filterLeadsByStatus(status: string) {
-    return this.leads.filter(lead => lead.status == status);
+    return this.leads.filter(lead => lead.status === status);
   }
 
-  dragStart($event, lead: LeadResponse) {
+  dragStart($event, lead: Lead) {
     this.draggedLead = lead;
   }
 
@@ -72,13 +74,13 @@ export class AllLeadComponent implements OnInit {
     }
   }
 
-  updateLeadStatus(leadResponse: LeadResponse) {
+  updateLeadStatus(leadResponse: Lead) {
     return this.leadService.updateLead(leadResponse).subscribe();
   }
 
-  showRightclickMenu($event, lead: LeadResponse) {
+  showRightclickMenu($event, lead: Lead) {
     this.selectedLeadForContext = lead;
-    this.selectedLeadForContext.context = {
+    this.selectedLeadForContext.ctxMenu = {
       positionX: $event.clientX,
       positionY: $event.clientY,
       isOpen: false
@@ -87,7 +89,7 @@ export class AllLeadComponent implements OnInit {
   }
 
   disableContextMenu() {
-    if(this.selectedLeadForContext) {
+    if (this.selectedLeadForContext) {
       this.selectedLeadForContext = null;
     }
   }

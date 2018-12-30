@@ -1,9 +1,7 @@
-package com.runway.timely.auth.dto;
+package io.nomondays.timely.auth.dto;
 
-import com.runway.timely.user.domain.User;
-import com.runway.timely.user.dto.UserResponse;
-
-import java.util.UUID;
+import io.nomondays.timely.user.domain.User;
+import io.nomondays.timely.user.dto.UserResponse;
 
 public class LoginResponse {
 

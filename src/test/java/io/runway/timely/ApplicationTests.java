@@ -1,4 +1,4 @@
-package com.runway.timely;
+package io.runway.timely;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,8 @@
-package com.runway.timely.user.event;
+package io.nomondays.timely.user.event;
 
-import com.runway.timely.user.domain.Role;
-import com.runway.timely.user.domain.User;
-import com.runway.timely.user.service.UserService;
+import io.nomondays.timely.user.domain.Role;
+import io.nomondays.timely.user.service.UserService;
+import io.nomondays.timely.user.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

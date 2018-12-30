@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
-import {LoginRequest} from "../../dto/login-request";
-import {AuthenticationService} from "../../service/authentication.service";
+import {LoginRequest} from "../../../dto/login-request";
+import {AuthenticationService} from "../../../service/authentication.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 

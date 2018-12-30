@@ -1,8 +1,8 @@
-package com.runway.timely.user.dto;
+package io.nomondays.timely.user.dto;
 
-import com.runway.timely.user.domain.Role;
-import com.runway.timely.user.domain.User;
-import com.runway.timely.util.Guard;
+import io.nomondays.timely.user.domain.Role;
+import io.nomondays.timely.user.domain.User;
+import io.nomondays.timely.util.Guard;
 
 import java.util.Set;
 

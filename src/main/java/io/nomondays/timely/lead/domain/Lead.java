@@ -1,4 +1,4 @@
-package com.runway.timely.lead.domain;
+package io.nomondays.timely.lead.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

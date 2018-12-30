@@ -1,16 +1,16 @@
 <div class="columns" style="padding: 25px;">
 
-  <ng-container *ngIf="this.isLoading">
+  <ng-container *ngIf="isLoading">
     <div class="column is-12">
-      <app-loading-spinner></app-loading-spinner>
+      <app-loading-spinner title="Leads" subtitle="Loading all leads..."></app-loading-spinner>
     </div>
   </ng-container>
 
-  <ng-container *ngIf="!this.isLoading">
-    <div class="column is-3" *ngFor="let state of this.states">
+  <ng-container *ngIf="!isLoading">
+    <div class="column is-3" *ngFor="let state of states">
       <h2 class="subtitle">{{state}}</h2>
-      <div *ngIf="this.draggedLead" (drop)="dragDrop($event, state)" class="box" (dragover)="dragOver($event)">Hinzufügen</div>
-      <div (click)="this.disableContextMenu()" *ngFor="let lead of this.filterLeadsByStatus(state)" class="box" draggable="true" (contextmenu)="this.showRightclickMenu($event, lead)" (dragend)="dragEnd($event, lead)" (dragstart)="dragStart($event, lead)">
+      <div *ngIf="draggedLead" (drop)="dragDrop($event, state)" class="box" (dragover)="dragOver($event)">Hinzufügen</div>
+      <div (click)="disableContextMenu()" *ngFor="let lead of filterLeadsByStatus(state)" class="box" draggable="true" (contextmenu)="showRightclickMenu($event, lead)" (dragend)="dragEnd($event, lead)" (dragstart)="dragStart($event, lead)">
         <article class="media">
           <div class="media-left">
             <figure class="image is-64x64">
@@ -36,7 +36,7 @@
     </div>
   </ng-container>
 
-  <div class="dropdown is-active" *ngIf="this.selectedLeadForContext" style="position: absolute" [ngStyle]="{'left.px': this.selectedLeadForContext.context.positionX, 'top.px': this.selectedLeadForContext.context.positionY}">
+  <div class="dropdown is-active" *ngIf="selectedLeadForContext" style="position: absolute" [ngStyle]="{'left.px': selectedLeadForContext.ctxMenu.positionX, 'top.px': selectedLeadForContext.ctxMenu.positionY}">
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <div class="dropdown-content">
         <span class="dropdown-item">
@@ -46,13 +46,13 @@
           <b>Context menu</b>
         </span>
         <hr class="dropdown-divider">
-        <a [routerLink]="[this.selectedLeadForContext.id]" class="dropdown-item">
+        <a [routerLink]="[selectedLeadForContext.id]" class="dropdown-item">
           <span class="icon">
             <fa-icon [icon]="icons.faInfo"></fa-icon>
           </span>
           Details
         </a>
-        <a [routerLink]="[this.selectedLeadForContext.id, 'edit']" class="dropdown-item">
+        <a [routerLink]="[selectedLeadForContext.id, 'edit']" class="dropdown-item">
           <span class="icon">
             <fa-icon [icon]="icons.faPen"></fa-icon>
           </span>
