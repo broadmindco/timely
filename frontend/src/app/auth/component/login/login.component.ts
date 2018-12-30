@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.authenticate(this.loginRequest).subscribe(
       data => {
         this.authService.saveLoginResponse(data);
+        this.loginRequest = null;
         this.router.navigate(['leads'])
       },
       error => this.error = error,

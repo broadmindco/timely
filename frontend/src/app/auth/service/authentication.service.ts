@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginRequest} from "../dto/login-request";
 import {LoginResponse} from "../dto/login-response";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

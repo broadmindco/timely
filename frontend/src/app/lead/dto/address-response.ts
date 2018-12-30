@@ -1,6 +1,6 @@
 export class AddressResponse {
 
-  street: string;
+  street: string = "";
   state: string;
   city: string;
   country: string;

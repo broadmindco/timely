@@ -7,6 +7,7 @@ import {AuthRoutingModule} from "./auth/auth-routing.module";
 import {LeadModule} from "./lead/lead.module";
 import {LeadRoutingModule} from "./lead/lead-routing.module";
 import {SharedModule} from "./shared/shared.module";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {SharedModule} from "./shared/shared.module";
     LeadModule,
     LeadRoutingModule,
     SharedModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

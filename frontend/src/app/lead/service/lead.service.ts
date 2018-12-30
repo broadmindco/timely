@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LeadPath} from "../util/lead-path";
-import {LeadRequest} from "../dto/lead-request";
 import {LeadResponse} from "../dto/lead-response";
+import {LeadRequest} from "../dto/lead-request";
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +19,12 @@ export class LeadService {
     return this.http.get<LeadResponse>(LeadPath.ALL_LEADS + '/' + id);
   }
 
-  async saveLead(leadRequest: LeadRequest) {
-    try {
-      const response = await this.http.put(LeadPath.ALL_LEADS + '/' + leadRequest.id, leadRequest).toPromise();
-    } catch(e) {
-      throw e;
-    }
+  updateLead(lead: LeadResponse | LeadRequest) {
+    return this.http.put<LeadResponse>(LeadPath.ALL_LEADS + '/' + lead.id, lead);
+  }
+
+  createLead(lead: LeadRequest) {
+    return this.http.post<LeadResponse>(LeadPath.ALL_LEADS, lead);
   }
 
 }

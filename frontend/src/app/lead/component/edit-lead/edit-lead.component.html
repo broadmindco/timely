@@ -1,3 +1,22 @@
-<p>
-  edit-lead works!
-</p>
+<div class="column is-12">
+  <app-loading-spinner *ngIf="this.isLoading"></app-loading-spinner>
+
+  <ng-container *ngIf="!this.isLoading">
+    <div class="columns">
+      <div class="column">
+        <app-lead-general-form [lead]="this.lead"></app-lead-general-form>
+        <div class="buttons">
+          <a class="button is-primary is-small" (click)="this.isEditingAddress = !this.isEditingAddress">Addresse bearbeiten</a>
+          <a class="button is-primary is-small" (click)="this.isEditingSocial = !this.isEditingSocial">Soziales bearbeiten</a>
+        </div>
+      </div>
+      <div class="column" *ngIf="this.isEditingSocial">
+        <app-lead-social-form [lead]="this.lead"></app-lead-social-form>
+      </div>
+      <div class="column" *ngIf="this.isEditingAddress">
+        <app-lead-address-form [lead]="this.lead"></app-lead-address-form>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

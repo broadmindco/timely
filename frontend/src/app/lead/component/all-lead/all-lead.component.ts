@@ -67,19 +67,13 @@ export class AllLeadComponent implements OnInit {
   dragDrop($event, state) {
     if(this.draggedLead) {
       this.draggedLead.status = state;
-
-      const request = new LeadRequest();
-      request.id = this.draggedLead.id;
-      request.status = this.draggedLead.status;
-      request.name = this.draggedLead.name;
-
+      this.updateLeadStatus(this.draggedLead);
       this.draggedLead = null;
-      this.updateLeadStatus(request);
     }
   }
 
-  updateLeadStatus(leadRequest: LeadRequest) {
-    return this.leadService.saveLead(leadRequest);
+  updateLeadStatus(leadResponse: LeadResponse) {
+    return this.leadService.updateLead(leadResponse).subscribe();
   }
 
   showRightclickMenu($event, lead: LeadResponse) {

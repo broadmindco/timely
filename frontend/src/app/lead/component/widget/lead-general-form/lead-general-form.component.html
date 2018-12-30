@@ -1,0 +1,36 @@
+<h2 class="subtitle">Leaddaten</h2>
+
+<form class="">
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="image is-96x96">
+      <img [src]="this.lead?.imageUrl" [alt]="this.lead?.name">
+    </div>
+    <br>
+    <div class="control">
+      <input ngModel class="input" type="text" name="imageUrl">
+    </div>
+    <p class="help">This is a help text</p>
+  </div>
+
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input ngModel class="input" type="text" name="name">
+    </div>
+    <p class="help">This is a help text</p>
+  </div>
+  <div class="field">
+    <label class="label">Status</label>
+    <div class="control">
+      <input ngModel class="input" type="text" name="status">
+    </div>
+    <p class="help">This is a help text</p>
+  </div>
+  <div class="field">
+    <label class="label">Zip</label>
+    <div class="control">
+      <button type="submit" class="button is-success">Speichern</button>
+    </div>
+  </div>
+</form>
